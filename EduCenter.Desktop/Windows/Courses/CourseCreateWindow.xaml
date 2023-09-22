@@ -1,0 +1,130 @@
+﻿<Window x:Class="EduCenter.Desktop.Windows.Courses.CourseCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EduCenter.Desktop.Windows.Courses"
+        mc:Ignorable="d"
+        Title="Create New Course" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="620" Width="700">
+    <Window.Resources>
+        <Style x:Key="TitleLabel" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+            <Setter Property="FontFamily" Value="Jetbrains Mono"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0 5"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="{DynamicResource PrimaryBackground}">
+        <StackPanel Orientation="Vertical"
+                    Margin="20">
+            <Label Content="Name" Style="{DynamicResource TitleLabel}"/>
+            <Border CornerRadius="10" 
+                    Background="{DynamicResource SecondaryBackground}"
+                    Height="40">
+                <TextBox x:Name="tbName"
+                         MaxLength="50"
+                         Grid.Column="1"
+                         VerticalAlignment="Center"
+                         FontSize="16"
+                         Margin="10 0 10 0"
+                         FontFamily="Jetbrains Mono"
+                         BorderThickness="0"
+                         Foreground="{DynamicResource PrimaryTextColor}"
+                         Background="{DynamicResource SecondaryBackground}"/>
+            </Border>
+            <Grid Height="220">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" >
+                    <Label Content="Image" Style="{DynamicResource TitleLabel}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="{DynamicResource SecondaryBackground}">
+                            <Border x:Name="ImgCourseImage"
+                                Height="150" Width="150"
+                                CornerRadius="10">
+                                <Border.Background>
+                                    <ImageBrush x:Name="ImgBImage" />
+                                </Border.Background>
+                            </Border>
+
+                        </Border>
+                        <Button x:Name="btnImageSelector" 
+                                VerticalAlignment="Bottom"
+                                Content="..."
+                                FontSize="20"
+                                Click="btnImageSelector_Click"
+                                Height="30" Width="30"
+                                Margin="10 0 0 0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" >
+                    <Label Content="Intro Thumb" Style="{DynamicResource TitleLabel}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="{DynamicResource SecondaryBackground}">
+                            <Border x:Name="ImgCourseThumb"
+                            Height="150" Width="150"
+                            CornerRadius="10">
+                                <Border.Background>
+                                    <ImageBrush x:Name="ImgBThumb" />
+                                </Border.Background>
+                            </Border>
+                        </Border>
+                        <Button x:Name="btnThumbSelector"
+                                Click="btnThumbSelector_Click"
+                                Content="..."
+                                FontSize="20"
+                                VerticalAlignment="Bottom"
+                                Height="30" Width="30"
+                                Margin="10 0 0 0"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="2" >
+                    <Label Content="Intro Video" Style="{DynamicResource TitleLabel}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="{DynamicResource SecondaryBackground}">
+                            <MediaElement 
+                            x:Name="MdCourseVideo"
+                            Height="150" 
+                            Width="150"
+                            LoadedBehavior="Manual"
+                            Visibility="Visible">
+                            </MediaElement>
+                        </Border>
+                        
+                        <Button x:Name="btnVideoSelector" 
+                                Content="..."
+                                FontSize="20"
+                                Height="30" Width="30"
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Bottom"
+                                Click="btnVideoSelector_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Label Content="Description" Style="{DynamicResource TitleLabel}"/>
+            <Border CornerRadius="10" 
+                    Background="{DynamicResource SecondaryBackground}"
+                    Height="120">
+                <RichTextBox x:Name="rbDescription"
+                         FontSize="16"
+                         Margin="10 10 10 10"
+                         FontFamily="Jetbrains Mono"
+                         BorderThickness="0"
+                         Foreground="{DynamicResource PrimaryTextColor}"
+                         Background="{DynamicResource SecondaryBackground}"/>
+            </Border>
+            <Button x:Name="btnSave" 
+                    Click="btnSave_Click" 
+                    Margin="0 20 0 10" 
+                    Height="50" 
+                    Style="{DynamicResource SuccessButton}" Content="Save"/>
+        </StackPanel>
+    </Grid>
+</Window>
